@@ -1,6 +1,6 @@
 import py_vncorenlp
+import os
 from sentence_transformers import SentenceTransformer
-
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -10,10 +10,10 @@ stop_words = "english"
 
 # Automatically download VnCoreNLP components from the original repository
 # and save them in some local machine folder
-py_vncorenlp.download_model(save_dir='./vn_cornlp')
+py_vncorenlp.download_model(save_dir=os.path.abspath('./vncorenlp'))
 
 # Load the word and sentence segmentation component
-rdrsegmenter = py_vncorenlp.VnCoreNLP(annotators=["wseg"], save_dir='./vn_cornlp')
+rdrsegmenter = py_vncorenlp.VnCoreNLP(annotators=["wseg"], save_dir=os.path.abspath('./vncorenlp'))
 
 doc = """
          Bánh cheesecake ngọt mềm cực kỳ hấp dẫn và kích thích vị giác. Cùng học cách làm bánh cheesecake việt quất béo ngậy thơm ngon dễ làm tại nhà ngay nhé
